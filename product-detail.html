@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agricultural Products Store - Chi tiết sản phẩm</title>
+    <link rel="shortcut icon" href="/images/logo.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+     <nav class="navbar navbar-expand-lg navbar-light bg-success sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-4" href="index.html">
+                <img src="/images/logo.png" alt="Agricultural Products Store" height="40">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Trang chủ</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Danh mục
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Tẩy tế bảo chế</a></li>
+                            <li><a class="dropdown-item" href="#">Chống nắng</a></li>
+                            <li><a class="dropdown-item" href="#">Toner</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="products.html">Sản phẩm</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Liên hệ</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <a href="cart.html" class="btn btn-nav btn--cart position-relative me-2">
+                        <i class="bi bi-cart fs-5"></i>
+
+                    </a>
+                    <a href="login.html" class="btn btn-nav btn--user"><i class="bi bi-person fs-5"></i></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Breadcrumb -->
+    <div class="container mt-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html" class="text-decoration-none">Trang chủ</a></li>
+                <li class="breadcrumb-item"><a href="products.html" class="text-decoration-none">Sản phẩm</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Sữa Rửa Mặt CeraVe</li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- Product Detail Section -->
+    <section class="container my-5">
+        <div class="row">
+            <!-- Product Images -->
+            <div class="col-md-6 mb-4">
+                <div class="product-images">
+                    <div class="main-image mb-3">
+                        <img src="images/sua-rua-mat-cerave-sach-sau-2.jpg" class="img-fluid rounded"
+                            alt="Sữa Rửa Mặt Innisfree">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Info -->
+            <div class="col-md-6">
+                <h1 class="mb-3">Sữa Rửa Mặt CeraVe</h1>
+                <div class="d-flex align-items-center mb-3">
+                    <div class="text-warning me-2">
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-half"></i>
+                    </div>
+                    <span class="text-muted">(124 đánh giá)</span>
+                </div>
+                <div class="mb-3">
+                    <span class="text-danger fs-4 fw-bold">220.000₫</span>
+                    <span class="text-decoration-line-through text-muted ms-2">275.000₫</span>
+                    <span class="badge bg-danger ms-2">-20%</span>
+                </div>
+                <p class="mb-4">Sữa rửa mặt chiết xuất từ trà xanh Innisfree giúp làm sạch sâu, dưỡng ẩm và làm dịu da.
+                    Sản phẩm phù hợp với mọi loại da.</p>
+
+                <!-- Product Variants -->
+
+
+                <!-- Quantity -->
+                <div class="mb-4">
+                    <label class="form-label">Số lượng:</label>
+                    <div class="input-group" style="width: 150px;">
+                        <button class="btn btn-outline-secondary" type="button" id="decreaseQuantity">-</button>
+                        <input type="number" class="form-control text-center" value="1" min="1" id="quantity">
+                        <button class="btn btn-outline-secondary" type="button" id="increaseQuantity">+</button>
+                    </div>
+                </div>
+
+                <!-- Add to Cart -->
+                <div class="d-grid gap-2">
+                    <button class="btn btn-primary" type="button">
+                        <i class="bi bi-cart-plus me-2"></i>Thêm vào giỏ hàng
+                    </button>
+                    <button class="btn btn-outline-primary" type="button">
+                        <i class="bi bi-heart me-2"></i>Thêm vào yêu thích
+                    </button>
+                </div>
+
+                <!-- Product Features -->
+                <div class="mt-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="bi bi-check-circle-fill text-success me-2"></i>
+                        <span>Sản phẩm chính hãng 100%</span>
+                    </div>
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="bi bi-truck text-success me-2"></i>
+                        <span>Giao hàng miễn phí cho đơn từ 500.000₫</span>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <i class="bi bi-arrow-counterclockwise text-success me-2"></i>
+                        <span>Đổi trả miễn phí trong 30 ngày</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Details Tabs -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <ul class="nav nav-tabs" id="productTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="description-tab" data-bs-toggle="tab"
+                            data-bs-target="#description" type="button" role="tab">Mô tả</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="specifications-tab" data-bs-toggle="tab"
+                            data-bs-target="#specifications" type="button" role="tab">Thông số</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews"
+                            type="button" role="tab">Đánh giá</button>
+                    </li>
+                </ul>
+                <div class="tab-content p-4 border border-top-0" id="productTabsContent">
+                    <div class="tab-pane fade show active" id="description" role="tabpanel">
+                        <h4>Đặc điểm nổi bật</h4>
+                        <ul>
+                            <li>Chiết xuất từ trà xanh organic từ đảo Jeju</li>
+                            <li>Làm sạch sâu, loại bỏ bụi bẩn và dầu thừa</li>
+                            <li>Dưỡng ẩm và làm dịu da hiệu quả</li>
+                            <li>Không chứa các thành phần gây hại cho da</li>
+                            <li>Phù hợp với mọi loại da</li>
+                        </ul>
+                        <h4>Hướng dẫn sử dụng</h4>
+                        <ol>
+                            <li>Làm ướt mặt với nước ấm</li>
+                            <li>Lấy một lượng sữa rửa mặt vừa đủ</li>
+                            <li>Tạo bọt và massage nhẹ nhàng</li>
+                            <li>Rửa sạch với nước</li>
+                        </ol>
+                    </div>
+                    <div class="tab-pane fade" id="specifications" role="tabpanel">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <th>Thương hiệu</th>
+                                    <td>CeraVe</td>
+                                </tr>
+                                <tr>
+                                    <th>Xuất xứ</th>
+                                    <td>Hàn Quốc</td>
+                                </tr>
+                                <tr>
+                                    <th>Dung tích</th>
+                                    <td>150ml</td>
+                                </tr>
+                                <tr>
+                                    <th>Loại da phù hợp</th>
+                                    <td>Mọi loại da</td>
+                                </tr>
+                                <tr>
+                                    <th>Hạn sử dụng</th>
+                                    <td>36 tháng kể từ ngày sản xuất</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tab-pane fade" id="reviews" role="tabpanel">
+                        <!-- Review Form -->
+                        <div class="mb-4">
+                            <h4>Viết đánh giá</h4>
+                            <form>
+                                <div class="mb-3">
+                                    <label class="form-label">Đánh giá của bạn</label>
+                                    <div class="rating">
+                                        <i class="bi bi-star fs-5 text-warning"></i>
+                                        <i class="bi bi-star fs-5 text-warning"></i>
+                                        <i class="bi bi-star fs-5 text-warning"></i>
+                                        <i class="bi bi-star fs-5 text-warning"></i>
+                                        <i class="bi bi-star fs-5 text-warning"></i>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="reviewText" class="form-label">Nhận xét</label>
+                                    <textarea class="form-control" id="reviewText" rows="3"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Gửi đánh giá</button>
+                            </form>
+                        </div>
+
+                        <!-- Review List -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-success text-white pt-5 pb-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase mb-4 fw-bold">
+                        <img src="/images/logo.png" alt="Cửa hàng Nông Sản Sạch" height="60">
+                    </h5>
+
+                    <p>Chúng tôi cung cấp các sản phẩm nông sản tươi sạch, an toàn và thân thiện với môi trường.</p>
+                    <div class="mt-4">
+                        <a href="#" class="text-white me-3"><i class="bi bi-facebook fs-5"></i></a>
+                        <a href="#" class="text-white me-3"><i class="bi bi-instagram fs-5"></i></a>
+                        <a href="#" class="text-white me-3"><i class="bi bi-twitter fs-5"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-youtube fs-5"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase mb-4 fw-bold">Liên kết nhanh</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Trang chủ</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Sản phẩm</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Giới thiệu</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Liên hệ</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Tin tức</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase mb-4 fw-bold">Dịch vụ</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Giao hàng tận nơi</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Chính sách đổi trả</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Chính sách bảo mật</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Điều khoản sử dụng</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase mb-4 fw-bold">Liên hệ với chúng tôi</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="bi bi-geo-alt me-2"></i> 123 Nguyễn Văn Linh, Q.7, TP.HCM</li>
+                        <li class="mb-2"><i class="bi bi-telephone me-2"></i> (028) 1234 5678</li>
+                        <li class="mb-2"><i class="bi bi-envelope me-2"></i> info@agrostore.com</li>
+                        <li><i class="bi bi-clock me-2"></i> 7:00 - 20:00, Thứ Hai - Chủ Nhật</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="text-center p-3 mt-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2025 Cửa hàng Nông Sản Sạch. Tất cả các quyền được bảo lưu.
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/scripts.js"></script>
+</body>
+
+</html>

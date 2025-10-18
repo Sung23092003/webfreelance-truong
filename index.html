@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agricultural Products Store - Trang chủ</title>
+    <link rel="shortcut icon" href="/images/logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="/images/logo.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        a {
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-success sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-4" href="index.html">
+                <img src="/images/logo.png" alt="Agricultural Products Store" height="40">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Trang chủ</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Danh mục
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Tẩy tế bảo chế</a></li>
+                            <li><a class="dropdown-item" href="#">Chống nắng</a></li>
+                            <li><a class="dropdown-item" href="#">Toner</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="products.html">Sản phẩm</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Liên hệ</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <a href="cart.html" class="btn btn-nav btn--cart position-relative me-2">
+                        <i class="bi bi-cart fs-5"></i>
+
+                    </a>
+                    <a href="login.html" class="btn btn-nav btn--user"><i class="bi bi-person fs-5"></i></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+        </div>
+
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="images/banner/banner1.png" class="d-block w-100" alt="banner">
+            </div>
+            <div class="carousel-item">
+                <img src="images/banner/banner2.png" class="d-block w-100" alt="banner">
+            </div>
+            <div class="carousel-item">
+                <img src="images/banner/banner3.png" class="d-block w-100" alt="banner">
+            </div>
+        </div>
+
+        <!-- Prev / Next -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev"
+            style="margin-left: 2%;">
+            <i class="bi bi-chevron-left"></i>
+        </button>
+
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next"
+            style="margin-right: 2%;">
+            <i class="bi bi-chevron-right"></i>
+        </button>
+    </div>
+
+
+    <!-- Categories Section -->
+    <section class="container my-5">
+        <h2 class="text-center mb-4">Danh mục sản phẩm</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card category-card">
+                    <img src="./images/tay-te-bao-chet-toan-than-c128-image-cover_img_250x250_8e0796_fit_center.jpg"
+                        class="card-img-top" alt="Tẩy tế bảo chết body">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Tẩy tế bảo chết body</h5>
+                        <a href="products.html" class="btn btn-outline-primary">Xem thêm</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card category-card">
+                    <img src="./images/chong-nang-da-mat.jpg" class="card-img-top" alt="Trang điểm">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">chống nắng da mặt</h5>
+                        <a href="products.html" class="btn btn-outline-primary">Xem thêm</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card category-card">
+                    <img src="./images/1857_1_img_250x250_8e0796_fit_center.jpg" class="card-img-top" alt="Toner">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Toner</h5>
+                        <a href="products.html" class="btn btn-outline-primary">Xem thêm</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sản phẩm nổi bật -->
+    <section class="container my-5">
+        <h2 class="text-center mb-4">Sản phẩm nổi bật</h2>
+        <div class="row g-4">
+            <!-- Sản phẩm 1: Kem Chống Nắng -->
+            <div class="col-md-4">
+                <!-- Card sản phẩm -->
+                <div class="card h-100">
+                    <!-- Khối chứa ảnh và các nút overlay -->
+                    <div class="position-relative">
+                        <!-- Ảnh sản phẩm -->
+                        <img src="images/kem-chong-nang-skin1004-chiet-xuat-rau-ma-spf50-pa-50ml-1.jpg"
+                            class="card-img-top" alt="Kem Chống Nắng">
+                        <!-- Nút yêu thích và thêm vào giỏ hàng, hiển thị khi hover -->
+                        <div class="product-overlay">
+                            <button class="btn btn-sm btn-outline-light"><i class="bi bi-heart"></i></button>
+                            <!-- Nút yêu thích -->
+                            <button class="btn btn-sm btn-outline-light"><i class="bi bi-cart-plus"></i></button>
+                            <!-- Nút thêm vào giỏ hàng -->
+                        </div>
+                        <!-- Badge giảm giá, góc trên trái -->
+                        <span class="badge bg-danger position-absolute top-0 start-0 m-2">-20%</span>
+                    </div>
+                    <!-- Thông tin sản phẩm -->
+                    <div class="card-body">
+                        <a href="product-detail.html">
+                            <h5 class="card-title">Kem Chống Nắng</h5> <!-- Tên sản phẩm -->
+                        </a>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="text-danger fw-bold">220.000₫</span> <!-- Giá mới -->
+                                <span class="text-decoration-line-through text-muted small">275.000₫</span>
+                                <!-- Giá cũ -->
+                            </div>
+                            <div class="text-warning">
+                                <!-- Đánh giá sao -->
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-half"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sản phẩm 2: Sữa Rửa Mặt -->
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="position-relative">
+                        <img src="images/Sữa Rửa Mặt CeraVe.jpg" class="card-img-top" alt="Sữa Rửa Mặt">
+                        <!-- Ảnh sản phẩm -->
+                        <div class="product-overlay">
+                            <button class="btn btn-sm btn-outline-light"><i class="bi bi-heart"></i></button>
+                            <!-- Nút yêu thích -->
+                            <button class="btn btn-sm btn-outline-light"><i class="bi bi-cart-plus"></i></button>
+                            <!-- Nút thêm vào giỏ hàng -->
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <a href="product-detail.html">
+                            <h5 class="card-title">Sữa Rửa Mặt</h5> <!-- Tên sản phẩm -->
+                        </a>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="text-danger fw-bold">650.000₫</span> <!-- Giá mới -->
+                            </div>
+                            <div class="text-warning">
+                                <!-- Đánh giá sao -->
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sản phẩm 3: Nước Tẩy Trang -->
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="position-relative">
+                        <img src="images/nuoc-tay-trang-l-oreal-paris-lam-sach-va-cap-am-400ml-1.jpg"
+                            class="card-img-top" alt="Nước Tẩy Trang"> <!-- Ảnh sản phẩm -->
+                        <div class="product-overlay">
+                            <button class="btn btn-sm btn-outline-light"><i class="bi bi-heart"></i></button>
+                            <!-- Nút yêu thích -->
+                            <button class="btn btn-sm btn-outline-light"><i class="bi bi-cart-plus"></i></button>
+                            <!-- Nút thêm vào giỏ hàng -->
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <a href="product-detail.html">
+                            <h5 class="card-title">Nước Tẩy Trang</h5> <!-- Tên sản phẩm -->
+                        </a>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="text-danger fw-bold">850.000₫</span> <!-- Giá mới -->
+                            </div>
+                            <div class="text-warning">
+                                <!-- Đánh giá sao -->
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-half"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sản phẩm 4: Sữa Tắm -->
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="position-relative">
+                        <img src="images/sua-tam-hatomugi-ho-tro-trang-da-giu-am-800ml-1_1.jpg" class="card-img-top"
+                            alt="Sữa Tắm"> <!-- Ảnh sản phẩm -->
+                        <div class="product-overlay">
+                            <button class="btn btn-sm btn-outline-light"><i class="bi bi-heart"></i></button>
+                            <!-- Nút yêu thích -->
+                            <button class="btn btn-sm btn-outline-light"><i class="bi bi-cart-plus"></i></button>
+                            <!-- Nút thêm vào giỏ hàng -->
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <a href="product-detail.html">
+                            <h5 class="card-title">Sữa Tắm</h5> <!-- Tên sản phẩm -->
+                        </a>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="text-danger fw-bold">489.000₫</span> <!-- Giá mới -->
+                            </div>
+                            <div class="text-warning">
+                                <!-- Đánh giá sao -->
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sản phẩm 5: Mặt Nạ -->
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="position-relative">
+                        <img src="images/mat-na-caryophy-lam-giam-mun-tham-duong-am-da-2.jpg" class="card-img-top"
+                            alt="Mặt Nạ"> <!-- Ảnh sản phẩm -->
+                        <div class="product-overlay">
+                            <button class="btn btn-sm btn-outline-light"><i class="bi bi-heart"></i></button>
+                            <!-- Nút yêu thích -->
+                            <button class="btn btn-sm btn-outline-light"><i class="bi bi-cart-plus"></i></button>
+                            <!-- Nút thêm vào giỏ hàng -->
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <a href="product-detail.html">
+                            <h5 class="card-title">Mặt Nạ </h5> <!-- Tên sản phẩm -->
+                        </a>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="text-danger fw-bold">25.000₫</span> <!-- Giá mới -->
+                            </div>
+                            <div class="text-warning">
+                                <!-- Đánh giá sao -->
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sản phẩm 6: Serum L'Oreal Sáng Da -->
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="position-relative">
+                        <img src="images/serum-l-oreal-duong-sang-va-mo-tham-nam-1_1.jpg" class="card-img-top"
+                            alt="Serum"> <!-- Ảnh sản phẩm -->
+                        <div class="product-overlay">
+                            <button class="btn btn-sm btn-outline-light"><i class="bi bi-heart"></i></button>
+                            <!-- Nút yêu thích -->
+                            <button class="btn btn-sm btn-outline-light"><i class="bi bi-cart-plus"></i></button>
+                            <!-- Nút thêm vào giỏ hàng -->
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <a href="product-detail.html">
+                            <h5 class="card-title">Serum L'Oreal Sáng Da</h5> <!-- Tên sản phẩm -->
+                        </a>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="text-danger fw-bold">280.000₫</span> <!-- Giá mới -->
+                            </div>
+                            <div class="text-warning">
+                                <!-- Đánh giá sao -->
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-half"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Nút xem tất cả sản phẩm -->
+        <div class="text-center mt-4">
+            <a href="products.html" class="btn btn-primary">Xem tất cả sản phẩm</a>
+        </div>
+    </section>
+
+    <!-- Features -->
+
+
+    <!-- Footer -->
+    <footer class="bg-success text-white pt-5 pb-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase mb-4 fw-bold">
+                        <img src="/images/logo.png" alt="Cửa hàng Nông Sản Sạch" height="60">
+                    </h5>
+
+                    <p>Chúng tôi cung cấp các sản phẩm nông sản tươi sạch, an toàn và thân thiện với môi trường.</p>
+                    <div class="mt-4">
+                        <a href="#" class="text-white me-3"><i class="bi bi-facebook fs-5"></i></a>
+                        <a href="#" class="text-white me-3"><i class="bi bi-instagram fs-5"></i></a>
+                        <a href="#" class="text-white me-3"><i class="bi bi-twitter fs-5"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-youtube fs-5"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase mb-4 fw-bold">Liên kết nhanh</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Trang chủ</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Sản phẩm</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Giới thiệu</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Liên hệ</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Tin tức</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase mb-4 fw-bold">Dịch vụ</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Giao hàng tận nơi</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Chính sách đổi trả</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Chính sách bảo mật</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Điều khoản sử dụng</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase mb-4 fw-bold">Liên hệ với chúng tôi</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="bi bi-geo-alt me-2"></i> 123 Nguyễn Văn Linh, Q.7, TP.HCM</li>
+                        <li class="mb-2"><i class="bi bi-telephone me-2"></i> (028) 1234 5678</li>
+                        <li class="mb-2"><i class="bi bi-envelope me-2"></i> info@agrostore.com</li>
+                        <li><i class="bi bi-clock me-2"></i> 7:00 - 20:00, Thứ Hai - Chủ Nhật</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="text-center p-3 mt-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2025 Cửa hàng Nông Sản Sạch. Tất cả các quyền được bảo lưu.
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/scripts.js"></script>
+</body>
+
+</html>

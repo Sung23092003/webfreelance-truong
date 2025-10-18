@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agricultural Products Store - Giỏ hàng</title>
+    <!-- Nhúng Bootstrap và icon -->
+    <link rel="shortcut icon" href="/images/logo.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <!-- Thanh điều hướng (Navigation) -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-success sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-4" href="index.html">
+                <img src="/images/logo.png" alt="Agricultural Products Store" height="40">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Trang chủ</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Danh mục
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Tẩy tế bảo chế</a></li>
+                            <li><a class="dropdown-item" href="#">Chống nắng</a></li>
+                            <li><a class="dropdown-item" href="#">Toner</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="products.html">Sản phẩm</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Liên hệ</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <a href="cart.html" class="btn btn-nav btn--cart position-relative me-2">
+                        <i class="bi bi-cart fs-5"></i>
+
+                    </a>
+                    <a href="login.html" class="btn btn-nav btn--user"><i class="bi bi-person fs-5"></i></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Đường dẫn vị trí trang hiện tại (Breadcrumb) -->
+    <div class="container mt-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html" class="text-decoration-none">Trang chủ</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Giỏ hàng</li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- Phần giỏ hàng -->
+    <section class="container my-5">
+        <h2 class="mb-4">Giỏ hàng của bạn</h2>
+        <div class="row">
+            <div class="col-lg-8">
+                <!-- Danh sách sản phẩm trong giỏ -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <!-- Sản phẩm 1 -->
+                        <div class="row mb-4">
+                            <div class="col-md-3">
+                                <img src="images/Sữa Rửa Mặt CeraVe.jpg" class="img-fluid rounded" alt="Sữa rửa mặt">
+                                <!-- Ảnh sản phẩm -->
+                            </div>
+                            <div class="col-md-9">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h5 class="mb-1">Sữa Rửa Mặt CeraVe</h5> <!-- Tên sản phẩm -->
+                                        <p class="mb-1 text-muted small">Mã sản phẩm: SKU001</p>
+                                        <!-- Chỉnh số lượng sản phẩm -->
+                                        <div class="d-flex align-items-center">
+                                            <button class="btn btn-outline-secondary btn-sm me-2"
+                                                onclick="decreaseQuantity(1)">-</button> <!-- Giảm số lượng -->
+                                            <input type="number" class="form-control form-control-sm text-center"
+                                                style="width: 60px;" value="1" min="1" id="quantity1">
+                                            <!-- Nhập số lượng -->
+                                            <button class="btn btn-outline-secondary btn-sm ms-2"
+                                                onclick="increaseQuantity(1)">+</button> <!-- Tăng số lượng -->
+                                        </div>
+                                    </div>
+                                    <div class="text-end">
+                                        <p class="mb-1 text-danger fw-bold">220.000₫</p> <!-- Giá sản phẩm -->
+                                        <button class="btn btn-link text-danger p-0" onclick="removeItem(1)"><i
+                                                class="bi bi-trash"></i></button> <!-- Xóa sản phẩm khỏi giỏ -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <!-- Sản phẩm 2 -->
+                        <div class="row mb-4">
+                            <div class="col-md-3">
+                                <img src="images/artboard_1_copy.jpg" class="img-fluid rounded" alt="Kem dưỡng">
+                                <!-- Ảnh sản phẩm -->
+                            </div>
+                            <div class="col-md-9">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h5 class="mb-1">Kem Dưỡng Ẩm Laneige Water Bank</h5> <!-- Tên sản phẩm -->
+                                        <p class="mb-1 text-muted small">Mã sản phẩm: SKU002</p>
+                                        <div class="d-flex align-items-center">
+                                            <button class="btn btn-outline-secondary btn-sm me-2"
+                                                onclick="decreaseQuantity(2)">-</button> <!-- Giảm số lượng -->
+                                            <input type="number" class="form-control form-control-sm text-center"
+                                                style="width: 60px;" value="1" min="1" id="quantity2">
+                                            <!-- Nhập số lượng -->
+                                            <button class="btn btn-outline-secondary btn-sm ms-2"
+                                                onclick="increaseQuantity(2)">+</button> <!-- Tăng số lượng -->
+                                        </div>
+                                    </div>
+                                    <div class="text-end">
+                                        <p class="mb-1 text-danger fw-bold">650.000₫</p> <!-- Giá sản phẩm -->
+                                        <button class="btn btn-link text-danger p-0" onclick="removeItem(2)"><i
+                                                class="bi bi-trash"></i></button> <!-- Xóa sản phẩm khỏi giỏ -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <!-- Sản phẩm 3 -->
+                        <div class="row">
+                            <div class="col-md-3">
+                                <img src="images/Tinh-chat-sam-co-dac-Sulwhasoo-First-Care-Activating-Serum-5.jpg"
+                                    class="img-fluid rounded" alt="Serum"> <!-- Ảnh sản phẩm -->
+                            </div>
+                            <div class="col-md-9">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h5 class="mb-1">Tinh Chất Sulwhasoo First Care</h5> <!-- Tên sản phẩm -->
+                                        <p class="mb-1 text-muted small">Mã sản phẩm: SKU003</p>
+                                        <div class="d-flex align-items-center">
+                                            <button class="btn btn-outline-secondary btn-sm me-2"
+                                                onclick="decreaseQuantity(3)">-</button> <!-- Giảm số lượng -->
+                                            <input type="number" class="form-control form-control-sm text-center"
+                                                style="width: 60px;" value="1" min="1" id="quantity3">
+                                            <!-- Nhập số lượng -->
+                                            <button class="btn btn-outline-secondary btn-sm ms-2"
+                                                onclick="increaseQuantity(3)">+</button> <!-- Tăng số lượng -->
+                                        </div>
+                                    </div>
+                                    <div class="text-end">
+                                        <p class="mb-1 text-danger fw-bold">1.850.000₫</p> <!-- Giá sản phẩm -->
+                                        <button class="btn btn-link text-danger p-0" onclick="removeItem(3)"><i
+                                                class="bi bi-trash"></i></button> <!-- Xóa sản phẩm khỏi giỏ -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nút tiếp tục mua sắm và xóa giỏ hàng -->
+                <div class="d-flex justify-content-between">
+                    <a href="products.html" class="btn btn-outline-primary">
+                        <i class="bi bi-arrow-left me-2"></i>Tiếp tục mua sắm
+                    </a>
+                    <button class="btn btn-outline-danger" onclick="clearCart()">
+                        <i class="bi bi-trash me-2"></i>Xóa giỏ hàng
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tóm tắt đơn hàng và thanh toán -->
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title mb-4">Tóm tắt đơn hàng</h5>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Tạm tính</span>
+                            <span>2.720.000₫</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Phí vận chuyển</span>
+                            <span>30.000₫</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-4">
+                            <span>Giảm giá</span>
+                            <span>-50.000₫</span>
+                        </div>
+                        <hr>
+                        <div class="d-flex justify-content-between mb-4">
+                            <strong>Tổng cộng</strong>
+                            <strong class="text-danger">2.700.000₫</strong>
+                        </div>
+
+                        <!-- Nhập mã giảm giá -->
+                        <div class="mb-4">
+                            <label for="couponCode" class="form-label">Mã giảm giá</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="couponCode" placeholder="Nhập mã giảm giá">
+                                <!-- Ô nhập mã giảm giá -->
+                                <button class="btn btn-outline-primary" type="button">Áp dụng</button>
+                                <!-- Nút áp dụng mã -->
+                            </div>
+                        </div>
+
+                        <!-- Nút thanh toán -->
+                        <button class="btn btn-primary w-100">Thanh toán</button>
+                    </div>
+                </div>
+
+                <!-- Phương thức thanh toán -->
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <h5 class="card-title mb-4">Phương thức thanh toán</h5>
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2560px-Visa_Inc._logo.svg.png"
+                                alt="Visa" height="30"> <!-- Logo Visa -->
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1280px-Mastercard-logo.svg.png"
+                                alt="Mastercard" height="30" class="ms-3"> <!-- Logo Mastercard -->
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/American_Express_logo_%282018%29.svg/1200px-American_Express_logo_%282018%29.svg.png"
+                                alt="American Express" height="30" class="ms-3"> <!-- Logo Amex -->
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-success text-white pt-5 pb-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase mb-4 fw-bold">
+                        <img src="/images/logo.png" alt="Cửa hàng Nông Sản Sạch" height="60">
+                    </h5>
+
+                    <p>Chúng tôi cung cấp các sản phẩm nông sản tươi sạch, an toàn và thân thiện với môi trường.</p>
+                    <div class="mt-4">
+                        <a href="#" class="text-white me-3"><i class="bi bi-facebook fs-5"></i></a>
+                        <a href="#" class="text-white me-3"><i class="bi bi-instagram fs-5"></i></a>
+                        <a href="#" class="text-white me-3"><i class="bi bi-twitter fs-5"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-youtube fs-5"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase mb-4 fw-bold">Liên kết nhanh</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Trang chủ</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Sản phẩm</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Giới thiệu</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Liên hệ</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Tin tức</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase mb-4 fw-bold">Dịch vụ</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Giao hàng tận nơi</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Chính sách đổi trả</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Chính sách bảo mật</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Điều khoản sử dụng</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase mb-4 fw-bold">Liên hệ với chúng tôi</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="bi bi-geo-alt me-2"></i> 123 Nguyễn Văn Linh, Q.7, TP.HCM</li>
+                        <li class="mb-2"><i class="bi bi-telephone me-2"></i> (028) 1234 5678</li>
+                        <li class="mb-2"><i class="bi bi-envelope me-2"></i> info@agrostore.com</li>
+                        <li><i class="bi bi-clock me-2"></i> 7:00 - 20:00, Thứ Hai - Chủ Nhật</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="text-center p-3 mt-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2025 Cửa hàng Nông Sản Sạch. Tất cả các quyền được bảo lưu.
+        </div>
+    </footer>
+
+    <!-- Nhúng Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/scripts.js"></script>
+</body>
+
+</html>
