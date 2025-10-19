@@ -59,6 +59,10 @@ body {
     color: #356adc;
 }
 
+.navbar-toggler__icon{
+    color: #fff;
+}
+
 @media (max-width: 767.98px) {
     .navbar-brand img {
         height: 40px;
