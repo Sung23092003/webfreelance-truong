@@ -1,3 +1,4 @@
+// === Dữ liệu sản phẩm ===
 const featuredProducts = [
     {
         id: 1,
@@ -142,48 +143,58 @@ const featuredProducts = [
     },
 ];
 
-// Hàm hiển thị sao (có nửa sao)
-const renderStars = (rating) => {
-    let fullStars = Math.floor(rating);
-    let halfStar = rating % 1 !== 0;
-    let starsHtml = "";
+// === Lấy ID sản phẩm từ localStorage hoặc URL ===
+const params = new URLSearchParams(window.location.search);
+const productId = parseInt(params.get("id")) || parseInt(localStorage.getItem("selectedProductId"));
 
-    for (let i = 0; i < fullStars; i++) starsHtml += '<i class="bi bi-star-fill"></i>';
-    if (halfStar) starsHtml += '<i class="bi bi-star-half"></i>';
-    while (starsHtml.split("bi-star").length - 1 < 5) starsHtml += '<i class="bi bi-star"></i>';
-    return starsHtml;
-};
+// === Tìm sản phẩm tương ứng ===
+const product = featuredProducts.find(p => p.id === productId);
 
-// Render 6 sản phẩm đầu tiên
-const productList = document.getElementById("product-list");
+// === Hiển thị thông tin chi tiết ===
+if (product) {
+    document.getElementById("breadcrumbName").textContent = product.name;
 
-featuredProducts.slice(0, 6).forEach((p) => {
-    productList.innerHTML += `
-      <div class="col-6 col-md-4 col-lg-4">
-        <div class="card h-100 border-0 shadow-sm">
-          <div class="position-relative">
-            <img src="${p.image}" class="card-img-top" alt="${p.name}">
-            <div class="product-overlay">
-              <button class="btn btn-sm btn-outline-light"><i class="bi bi-heart"></i></button>
-              <button class="btn btn-sm btn-outline-light"><i class="bi bi-cart-plus"></i></button>
-            </div>
-          </div>
-          <div class="card-body">
-            <a href="product-detail.html?id=${p.id}">
-                <h5 class="card-title">${p.name}</h5>
-            </a>
-            <div class="d-flex justify-content-between align-items-center">
-              <div>
-                <span class="text-danger fw-bold">${p.price.toLocaleString()}₫</span>
-                ${p.oldPrice ? `<span class="text-muted text-decoration-line-through small">${p.oldPrice.toLocaleString()}₫</span>` : ""}
-              </div>
-              <div class="text-warning">${renderStars(p.rating)}</div>
-            </div>
-          </div>
+    // --- Render phần chi tiết sản phẩm chính ---
+    document.getElementById("productDetail").innerHTML = `
+        <div class="col-md-6 text-center">
+            <img src="${product.image}" class="img-fluid rounded shadow-sm" alt="${product.name}">
         </div>
-      </div>
+        <div class="col-md-6">
+            <h2 class="fw-bold text-success">${product.name}</h2>
+            <p class="text-muted">${product.category}</p>
+            <div class="d-flex align-items-center mb-2">
+                <div class="text-warning me-2">
+                    ${'★'.repeat(Math.floor(product.rating))} (${product.rating})
+                </div>
+            </div>
+            <h4 class="text-success fw-bold">${product.price.toLocaleString()}₫</h4>
+            ${product.oldPrice ? `<p class="text-muted text-decoration-line-through">${product.oldPrice.toLocaleString()}₫</p>` : ""}
+            <p class="mt-3">${product.description}</p>
+            <p><strong>Còn hàng:</strong> ${product.stock}</p>
+            <div class="d-grid gap-2 mt-4">
+                <button class="btn btn-primary"><i class="bi bi-cart-plus me-2"></i>Thêm vào giỏ</button>
+                <button class="btn btn-outline-success"><i class="bi bi-heart me-2"></i>Yêu thích</button>
+            </div>
+        </div>
     `;
-});
 
-
+    // --- Render phần "Mô tả" trong tab ---
+    const descriptionTab = document.querySelector("#description");
+    descriptionTab.innerHTML = `
+        <h4>Đặc điểm nổi bật</h4>
+        <p>${product.description}</p>
+        
+        ${product.usesAndHowTo ? `
+        <h4 class="mt-4">Công dụng & Hướng dẫn sử dụng</h4>
+        <p>${product.usesAndHowTo}</p>
+        ` : ""}
+    `;
+} else {
+    document.getElementById("productDetail").innerHTML = `
+        <div class="text-center text-danger py-5">
+            <h3>Không tìm thấy sản phẩm!</h3>
+            <a href="products.html" class="btn btn-success mt-3">Quay lại trang sản phẩm</a>
+        </div>
+    `;
+}
 
