@@ -127,6 +127,30 @@ let currentMaxPrice = 200000;
 let currentPage = 1;
 const perPage = 6;
 
+// Lấy danh mục từ localStorage (nếu có)
+const savedCategory = localStorage.getItem("selectedCategory");
+if (savedCategory) {
+  currentCategory = savedCategory;
+  localStorage.removeItem("selectedCategory"); // Xóa sau khi dùng
+
+  // Khi có danh mục lưu, tự động đánh dấu active trong giao diện
+  document.addEventListener("DOMContentLoaded", () => {
+    // Chờ DOM sẵn sàng để thao tác
+    const links = document.querySelectorAll("#category-filter .filter-link");
+    links.forEach((link) => {
+      if (link.dataset.category === savedCategory) {
+        link.classList.add("active");
+      } else {
+        link.classList.remove("active");
+      }
+    });
+
+    // Gọi lại render để hiển thị sản phẩm tương ứng
+    renderProducts();
+  });
+}
+
+
 // ======== HÀM HIỂN THỊ SAO ========
 function renderStars(rating) {
   let full = Math.floor(rating);
