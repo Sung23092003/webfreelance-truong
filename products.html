@@ -25,7 +25,7 @@
                 <img src="./images/logo.png" alt="Agricultural Products Store" height="40">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <i class="bi bi-list fs-2 navbar-toggler__icon"></i> 
+                <i class="bi bi-list fs-2 navbar-toggler__icon"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
@@ -36,7 +36,7 @@
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                             Danh mục
                         </a>
-                      <ul class="dropdown-menu">
+                        <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#">Rau củ sạch</a></li>
                             <li><a class="dropdown-item" href="#">Trái cây tươi</a></li>
                             <li><a class="dropdown-item" href="#">Thịt - Trứng</a></li>
@@ -73,297 +73,108 @@
         </nav>
     </div>
 
-    <!-- Products Section -->
+    <!-- Product List Section -->
     <section class="container my-5">
+        <h2 class="text-center mb-4 fw-bold text-success">Tất cả sản phẩm</h2>
         <div class="row">
-            <!-- Filters Sidebar -->
-            <div class="col-lg-3">
-                <div class="card border-0 shadow-sm mb-4">
-                    <div class="card-body">
-                        <h5 class="mb-3">Danh mục</h5>
-                        <div class="list-group list-group-flush">
-                            <a href="#"
-                                class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                                Chăm sóc da mặt
-
-                            </a>
-                            <a href="#"
-                                class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                                Trang điểm
-
-                            </a>
-                            <a href="#"
-                                class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                                Chăm sóc cơ thể
-
-                            </a>
-                            <a href="#"
-                                class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                                Chăm sóc tóc
-
-                            </a>
-                            <a href="#"
-                                class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                                Nước hoa
-
-                            </a>
-                        </div>
-
-                        <h5 class="mb-3 mt-4">Thương hiệu</h5>
-                        <div class="form-check mb-2">
-                            <input class="form-check-input" type="checkbox" id="brand1">
-                            <label class="form-check-label" for="brand1">Innisfree</label>
-                        </div>
-                        <div class="form-check mb-2">
-                            <input class="form-check-input" type="checkbox" id="brand2">
-                            <label class="form-check-label" for="brand2">The Face Shop</label>
-                        </div>
-                        <div class="form-check mb-2">
-                            <input class="form-check-input" type="checkbox" id="brand3">
-                            <label class="form-check-label" for="brand3">Laneige</label>
-                        </div>
-                        <div class="form-check mb-2">
-                            <input class="form-check-input" type="checkbox" id="brand4">
-                            <label class="form-check-label" for="brand4">Sulwhasoo</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="brand5">
-                            <label class="form-check-label" for="brand5">Mamonde</label>
-                        </div>
-
-
-
-                        <button class="btn btn-primary w-100 mt-3">Áp dụng</button>
-                    </div>
-                </div>
+            <!-- ===== Sidebar ===== -->
+            <!-- Nút hiển thị sidebar khi ở mobile -->
+            <div class="d-lg-none text-end mb-3">
+                <button class="btn btn-outline-success" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#filterOffcanvas">
+                    <i class="bi bi-funnel"></i> Bộ lọc sản phẩm
+                </button>
             </div>
+            <!-- ===== Sidebar ===== -->
+            <aside class="col-lg-3 mb-4">
+                <!-- PC view -->
+                <div class="card shadow-sm border-0 mb-4 d-none d-lg-block">
+                    <div class="card-header bg-success text-white fw-bold">
+                        <i class="bi bi-funnel me-2"></i>Bộ lọc sản phẩm
+                    </div>
+                    <div class="card-body">
+                        <!-- Copy phần lọc cũ ở đây (danh mục, giá, sao) -->
+                        <h6 class="fw-bold">Danh mục</h6>
+                        <ul class="list-unstyled mb-3" id="category-filter">
+                            <li><a href="#" class="filter-link active" data-category="Tất cả">Tất cả</a></li>
+                            <li><a href="#" class="filter-link" data-category="Rau Củ Sạch">Rau Củ Sạch</a></li>
+                            <li><a href="#" class="filter-link" data-category="Trái Cây Tươi">Trái Cây Tươi</a></li>
+                            <li><a href="#" class="filter-link" data-category="Thịt - Trứng">Thịt - Trứng</a></li>
+                            <li><a href="#" class="filter-link" data-category="Gạo & Ngũ Cốc">Gạo & Ngũ Cốc</a></li>
+                            <li><a href="#" class="filter-link" data-category="Đặc Sản Quê">Đặc Sản Quê</a></li>
+                            <li><a href="#" class="filter-link" data-category="Nước Ép & Mật Ong">Nước Ép & Mật Ong</a>
+                            </li>
+                        </ul>
 
-            <!-- Products Grid -->
+                        <h6 class="fw-bold">Khoảng giá</h6>
+                        <div class="mb-3">
+                            <label for="priceRange" class="form-label">Giá tối đa: <span
+                                    id="priceValue">200,000₫</span></label>
+                            <input type="range" class="form-range" min="0" max="200000" step="10000" id="priceRange"
+                                value="200000">
+                        </div>
+
+                        <h6 class="fw-bold">Đánh giá</h6>
+                        <div id="rating-filter">
+                            <div><input type="radio" name="rating" value="all" checked> Tất cả</div>
+                            <div><input type="radio" name="rating" value="5"> 5 sao</div>
+                            <div><input type="radio" name="rating" value="4"> 4 sao</div>
+                            <div><input type="radio" name="rating" value="3"> 3 sao</div>
+                            <div><input type="radio" name="rating" value="2"> 2 sao</div>
+                            <div><input type="radio" name="rating" value="1"> 1 sao</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile/tablet Offcanvas -->
+                <div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="filterOffcanvas">
+                    <div class="offcanvas-header bg-success text-white">
+                        <h5 class="offcanvas-title"><i class="bi bi-funnel me-2"></i>Bộ lọc sản phẩm</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <!-- Copy lại nội dung bộ lọc y như trên -->
+                        <h6 class="fw-bold">Danh mục</h6>
+                        <ul class="list-unstyled mb-3" id="category-filter-mobile">
+                            <li><a href="#" class="filter-link active" data-category="Tất cả">Tất cả</a></li>
+                            <li><a href="#" class="filter-link" data-category="Rau Củ Sạch">Rau Củ Sạch</a></li>
+                            <li><a href="#" class="filter-link" data-category="Trái Cây Tươi">Trái Cây Tươi</a></li>
+                            <li><a href="#" class="filter-link" data-category="Thịt - Trứng">Thịt - Trứng</a></li>
+                            <li><a href="#" class="filter-link" data-category="Gạo & Ngũ Cốc">Gạo & Ngũ Cốc</a></li>
+                            <li><a href="#" class="filter-link" data-category="Đặc Sản Quê">Đặc Sản Quê</a></li>
+                            <li><a href="#" class="filter-link" data-category="Nước Ép & Mật Ong">Nước Ép & Mật Ong</a>
+                            </li>
+                        </ul>
+
+                        <h6 class="fw-bold">Khoảng giá</h6>
+                        <div class="mb-3">
+                            <label for="priceRangeMobile" class="form-label">Giá tối đa: <span
+                                    id="priceValueMobile">200,000₫</span></label>
+                            <input type="range" class="form-range" min="0" max="200000" step="10000"
+                                id="priceRangeMobile" value="200000">
+                        </div>
+
+                        <h6 class="fw-bold">Đánh giá</h6>
+                        <div id="rating-filter-mobile">
+                            <div><input type="radio" name="rating-mobile" value="all" checked> Tất cả</div>
+                            <div><input type="radio" name="rating-mobile" value="5"> 5 sao</div>
+                            <div><input type="radio" name="rating-mobile" value="4"> 4 sao</div>
+                            <div><input type="radio" name="rating-mobile" value="3"> 3 sao</div>
+                            <div><input type="radio" name="rating-mobile" value="2"> 2 sao</div>
+                            <div><input type="radio" name="rating-mobile" value="1"> 1 sao</div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+
+            <!-- ===== Product Grid ===== -->
             <div class="col-lg-9">
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                    <div>
-                        <h4 class="mb-0">Sản phẩm nổi bật</h4>
-                    </div>
-
-                </div>
-
-                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                    <!-- Product 1 -->
-                    <div class="col">
-                        <div class="card h-100">
-                            <div class="position-relative">
-                                <img src="images/Sữa Rửa Mặt CeraVe.jpg" class="card-img-top" alt="Sữa rửa mặt">
-                                <div class="product-overlay">
-                                    <button class="btn btn-sm btn-outline-light"><i class="bi bi-heart"></i></button>
-                                    <button class="btn btn-sm btn-outline-light"><i
-                                            class="bi bi-cart-plus"></i></button>
-                                </div>
-                                <span class="badge bg-danger position-absolute top-0 start-0 m-2">-20%</span>
-                            </div>
-                            <div class="card-body">
-                                <a href="product-detail.html">
-                                    <h5 class="card-title">Sữa Rửa Mặt CeraVe</h5>
-                                </a>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <span class="text-danger fw-bold">220.000₫</span>
-                                        <span class="text-decoration-line-through text-muted small">275.000₫</span>
-                                    </div>
-                                    <div class="text-warning">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-half"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Product 2 -->
-                    <div class="col">
-                        <div class="card h-100">
-                            <div class="position-relative">
-                                <img src="images/Tinh-chat-sam-co-dac-Sulwhasoo-First-Care-Activating-Serum-5.jpg"
-                                    class="card-img-top" alt="Serum La Roche-Posay">
-                                <div class="product-overlay">
-                                    <button class="btn btn-sm btn-outline-light"><i class="bi bi-heart"></i></button>
-                                    <button class="btn btn-sm btn-outline-light"><i
-                                            class="bi bi-cart-plus"></i></button>
-                                </div>
-
-                            </div>
-                            <div class="card-body">
-                                <a href="product-detail.html">
-                                    <h5 class="card-title">Serum Sulwhasoo</h5>
-                                </a>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <span class="text-danger fw-bold">650.000₫</span>
-
-                                    </div>
-                                    <div class="text-warning">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Product 3 -->
-                    <div class="col">
-                        <div class="card h-100">
-                            <div class="position-relative">
-                                <img src="images/artboard_1_copy.jpg" class="card-img-top"
-                                    alt="Xịt Khoáng La Roche-Posay">
-                                <div class="product-overlay">
-                                    <button class="btn btn-sm btn-outline-light"><i class="bi bi-heart"></i></button>
-                                    <button class="btn btn-sm btn-outline-light"><i
-                                            class="bi bi-cart-plus"></i></button>
-                                </div>
-
-                            </div>
-                            <div class="card-body">
-                                <a href="product-detail.html">
-                                    <h5 class="card-title">Kem dưỡng ẩm</h5>
-                                </a>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <span class="text-danger fw-bold">850.000₫</span>
-
-                                    </div>
-                                    <div class="text-warning">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-half"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Product 4 -->
-                    <div class="col">
-                        <div class="card h-100">
-                            <div class="position-relative">
-                                <img src="images/kem-chong-nang-skin1004-chiet-xuat-rau-ma-spf50-pa-50ml-1.jpg"
-                                    class="card-img-top" alt="Sữa Chống Nắng Anessa">
-                                <div class="product-overlay">
-                                    <button class="btn btn-sm btn-outline-light"><i class="bi bi-heart"></i></button>
-                                    <button class="btn btn-sm btn-outline-light"><i
-                                            class="bi bi-cart-plus"></i></button>
-                                </div>
-
-                            </div>
-                            <div class="card-body">
-                                <a href="product-detail.html">
-                                    <h5 class="card-title">KEM Chống Nắng </h5>
-                                </a>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <span class="text-danger fw-bold">489.000₫</span>
-
-                                    </div>
-                                    <div class="text-warning">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Product 5 -->
-                    <div class="col">
-                        <div class="card h-100">
-                            <div class="position-relative">
-                                <img src="images/Sữa Rửa Mặt CeraVe.jpg" class="card-img-top" alt="Mặt nạ Caryophy">
-                                <div class="product-overlay">
-                                    <button class="btn btn-sm btn-outline-light"><i class="bi bi-heart"></i></button>
-                                    <button class="btn btn-sm btn-outline-light"><i
-                                            class="bi bi-cart-plus"></i></button>
-                                </div>
-
-                            </div>
-                            <div class="card-body">
-                                <a href="product-detail.html">
-                                    <h5 class="card-title">Cerave</h5>
-                                </a>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <span class="text-danger fw-bold">255.000₫</span>
-
-                                    </div>
-                                    <div class="text-warning">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Product 6 -->
-                    <div class="col">
-                        <div class="card h-100">
-                            <div class="position-relative">
-                                <img src="images/sua-tam-hatomugi-ho-tro-trang-da-giu-am-800ml-1_1.jpg"
-                                    class="card-img-top" alt="Serum L'Oreal">
-                                <div class="product-overlay">
-                                    <button class="btn btn-sm btn-outline-light"><i class="bi bi-heart"></i></button>
-                                    <button class="btn btn-sm btn-outline-light"><i
-                                            class="bi bi-cart-plus"></i></button>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <a href="product-detail.html">
-                                    <h5 class="card-title">Sữa tắm</h5>
-                                </a>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <span class="text-danger fw-bold">280.000₫</span>
-                                    </div>
-                                    <div class="text-warning">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-half"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
+                <div class="row g-4" id="product-list"></div>
 
                 <!-- Pagination -->
                 <nav class="mt-4">
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1">Trước</a>
-                        </li>
-                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">Sau</a>
-                        </li>
-                    </ul>
+                    <ul class="pagination justify-content-center" id="pagination"></ul>
                 </nav>
             </div>
         </div>
@@ -426,6 +237,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/scripts.js"></script>
+    <script src="js/products-list.js"></script>
 </body>
 
 </html>
