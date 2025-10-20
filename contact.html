@@ -29,12 +29,18 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Danh mục</a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="products.html" onclick="setCategory('Rau Củ Sạch')">Rau củ sạch</a></li>
-              <li><a class="dropdown-item" href="products.html" onclick="setCategory('Trái Cây Tươi')">Trái cây tươi</a></li>
-              <li><a class="dropdown-item" href="products.html" onclick="setCategory('Thịt - Trứng')">Thịt - Trứng</a></li>
-              <li><a class="dropdown-item" href="products.html" onclick="setCategory('Gạo & Ngũ Cốc')">Gạo & Ngũ cốc</a></li>
-              <li><a class="dropdown-item" href="products.html" onclick="setCategory('Đặc Sản Quê')">Đặc sản quê</a></li>
-              <li><a class="dropdown-item" href="products.html" onclick="setCategory('Nước Ép & Mật Ong')">Nước ép & mật ong</a></li>
+              <li><a class="dropdown-item" href="products.html" onclick="setCategory('Rau Củ Sạch')">Rau củ sạch</a>
+              </li>
+              <li><a class="dropdown-item" href="products.html" onclick="setCategory('Trái Cây Tươi')">Trái cây tươi</a>
+              </li>
+              <li><a class="dropdown-item" href="products.html" onclick="setCategory('Thịt - Trứng')">Thịt - Trứng</a>
+              </li>
+              <li><a class="dropdown-item" href="products.html" onclick="setCategory('Gạo & Ngũ Cốc')">Gạo & Ngũ cốc</a>
+              </li>
+              <li><a class="dropdown-item" href="products.html" onclick="setCategory('Đặc Sản Quê')">Đặc sản quê</a>
+              </li>
+              <li><a class="dropdown-item" href="products.html" onclick="setCategory('Nước Ép & Mật Ong')">Nước ép & mật
+                  ong</a></li>
             </ul>
           </li>
           <li class="nav-item">
@@ -47,6 +53,10 @@
         <div class="d-flex">
           <a href="cart.html" class="btn btn-nav btn--cart position-relative me-2">
             <i class="bi bi-cart fs-5"></i>
+            <span id="cart-count"
+              class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              0
+            </span>
           </a>
           <a href="login.html" class="btn btn-nav btn--user"><i class="bi bi-person fs-5"></i></a>
         </div>
@@ -87,7 +97,8 @@
               </div>
               <div class="mb-3">
                 <label for="message" class="form-label">Nội dung</label>
-                <textarea id="message" rows="5" class="form-control" placeholder="Nhập nội dung bạn muốn gửi..." required></textarea>
+                <textarea id="message" rows="5" class="form-control" placeholder="Nhập nội dung bạn muốn gửi..."
+                  required></textarea>
               </div>
               <button type="submit" class="btn btn-success w-100">Gửi liên hệ</button>
             </form>
@@ -98,13 +109,13 @@
       <!-- Map -->
       <div class="col-lg-6">
         <h3 class="fw-bold text-success mb-3">Địa chỉ cửa hàng</h3>
-        <p><i class="bi bi-geo-alt text-success me-2"></i> 123 Nguyễn Văn Linh, Q.7, TP.HCM</p>
+        <p><i class="bi bi-geo-alt text-success me-2"></i> Số 51 Đinh Tiên Hoàng, Q. Hoàn Kiếm, TP. Hà Nội.</p>
         <p><i class="bi bi-telephone text-success me-2"></i> (028) 1234 5678</p>
         <p><i class="bi bi-envelope text-success me-2"></i> info@agrostore.com</p>
         <div class="ratio ratio-16x9 shadow-sm rounded">
-          <iframe
-            src="https://www.google.com/maps?q=123+Nguyễn+Văn+Linh,+Quận+7,+TPHCM&output=embed"
-            allowfullscreen="" loading="lazy"></iframe>
+          <iframe src="https://www.google.com/maps?q=51+Đinh+Tiên+Hoàng,+Hoàn+Kiếm,+Hà+Nội&output=embed" allowfullscreen
+            loading="lazy">
+          </iframe>
         </div>
       </div>
     </div>
@@ -151,7 +162,7 @@
         <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
           <h5 class="text-uppercase mb-4 fw-bold">Liên hệ với chúng tôi</h5>
           <ul class="list-unstyled">
-            <li class="mb-2"><i class="bi bi-geo-alt me-2"></i> 123 Nguyễn Văn Linh, Q.7, TP.HCM</li>
+            <li class="mb-2"><i class="bi bi-geo-alt me-2"></i> Số 51 Đinh Tiên Hoàng, Q. Hoàn Kiếm, TP. Hà Nội.</li>
             <li class="mb-2"><i class="bi bi-telephone me-2"></i> (028) 1234 5678</li>
             <li class="mb-2"><i class="bi bi-envelope me-2"></i> info@agrostore.com</li>
             <li><i class="bi bi-clock me-2"></i> 7:00 - 20:00, Thứ Hai - Chủ Nhật</li>
@@ -166,18 +177,74 @@
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
+    // Đặt category khi chọn
     function setCategory(category) {
       localStorage.setItem("selectedCategory", category);
     }
 
-    // Xử lý form liên hệ
+    // Cập nhật số lượng trong giỏ hàng
+    function updateCartCount() {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const validItems = cart.filter(item => item.id && item.id !== "undefined");
+      const uniqueIds = [...new Set(validItems.map(item => item.id))];
+      document.getElementById("cart-count").textContent = uniqueIds.length;
+    }
+
+    // Thêm sản phẩm vào giỏ hàng
+    function addToCart(productId) {
+      if (!productId || productId === "undefined" || isNaN(productId)) {
+        console.warn("⚠️ Không thể thêm sản phẩm: ID không hợp lệ");
+        return;
+      }
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const existing = cart.find(item => item.id === productId);
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cart.push({ id: productId, quantity: 1 });
+      }
+      localStorage.setItem("cart", JSON.stringify(cart));
+      updateCartCount();
+    }
+
+    // Xử lý click thêm giỏ hàng
+    function handleAddToCart(e) {
+      const btn = e.target.closest(".btn-add-cart");
+      if (!btn) return;
+      const id = btn.dataset.id ? parseInt(btn.dataset.id) : null;
+      addToCart(id);
+    }
+
+    // Khi DOM sẵn sàng
+    document.addEventListener("DOMContentLoaded", () => {
+      updateCartCount();
+      document.removeEventListener("click", handleAddToCart);
+      document.addEventListener("click", handleAddToCart);
+    });
+
+    // Đồng bộ giữa các tab
+    window.addEventListener("storage", updateCartCount);
+
+    // ✅ Xử lý form liên hệ với SweetAlert2
     document.getElementById("contactForm").addEventListener("submit", function (e) {
       e.preventDefault();
-      alert("Cảm ơn bạn đã liên hệ! Chúng tôi sẽ phản hồi sớm nhất có thể.");
+
+      // Giả lập gửi form (thực tế bạn có thể thêm fetch hoặc gửi API)
+      Swal.fire({
+        title: "Gửi liên hệ thành công!",
+        text: "Cảm ơn bạn đã liên hệ với chúng tôi. Chúng tôi sẽ phản hồi sớm nhất có thể!",
+        icon: "success",
+        confirmButtonText: "Đóng",
+        confirmButtonColor: "#198754" // Màu xanh Bootstrap
+      });
+
+      // Reset form
       this.reset();
     });
   </script>
+
 </body>
 
 </html>

@@ -242,35 +242,39 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Hiệu ứng thêm vào giỏ hàng
+    /* ---------- Hiệu ứng thêm vào giỏ hàng (vừa update localStorage + badge) ---------- */
     const addToCartButtons = document.querySelectorAll('[id^="addToCart"], .bi-cart-plus');
+
     addToCartButtons.forEach(button => {
         button.addEventListener('click', function (e) {
             e.preventDefault();
 
-            const cart = document.querySelector('.bi-cart');
-            if (!cart) return;
+            // --- Lấy data sản phẩm từ attributes của nút (bạn cần đảm bảo các data-* này tồn tại trên nút) ---
+            // Ví dụ nút: <button class="btn-add-cart" data-id="2" data-name="Rau cải" data-price="18000" data-image="images/..." >
+            const productId = this.getAttribute('data-id') || this.dataset.id;
+            const productName = this.getAttribute('data-name') || this.dataset.name || '';
+            const productPrice = parseInt(this.getAttribute('data-price') || this.dataset.price || 0, 10);
+            const productImage = this.getAttribute('data-image') || this.dataset.image || '';
 
-            // Tạo phần tử bay
+            // Tạo phần tử bay (giữ nguyên hiệu ứng)
+            const cartIcon = document.querySelector('.bi-cart');
+            if (!cartIcon) return; // nếu không có icon giỏ -> dừng
+
+            const buttonRect = this.getBoundingClientRect();
+            const cartRect = cartIcon.getBoundingClientRect();
+
             const flyingElement = document.createElement('div');
             flyingElement.className = 'flying-element';
             flyingElement.innerHTML = '<i class="bi bi-bag-check-fill"></i>';
             document.body.appendChild(flyingElement);
 
-            // Lấy vị trí nút
-            const buttonRect = this.getBoundingClientRect();
-            const cartRect = cart.getBoundingClientRect();
-
-            // Đặt vị trí ban đầu
             flyingElement.style.position = 'fixed';
             flyingElement.style.left = buttonRect.left + 'px';
             flyingElement.style.top = buttonRect.top + 'px';
             flyingElement.style.fontSize = '20px';
-            flyingElement.style.color = 'var(--bs-primary)';
             flyingElement.style.zIndex = '9999';
             flyingElement.style.transition = 'all 0.8s cubic-bezier(0.18, 0.89, 0.32, 1.28)';
 
-            // Kích hoạt hiệu ứng
             setTimeout(() => {
                 flyingElement.style.left = cartRect.left + 'px';
                 flyingElement.style.top = cartRect.top + 'px';
@@ -278,27 +282,49 @@ document.addEventListener('DOMContentLoaded', function () {
                 flyingElement.style.opacity = '0';
             }, 10);
 
-            // Xóa phần tử sau hiệu ứng
+            // Sau khi animation xong -> cập nhật localStorage và badge
             setTimeout(() => {
                 flyingElement.remove();
 
-                // Cập nhật số lượng trong giỏ hàng
-                const cartBadge = document.querySelector('.badge.bg-danger');
-                if (cartBadge) {
-                    let count = parseInt(cartBadge.textContent);
-                    cartBadge.textContent = count + 1;
-                    cartBadge.classList.remove('d-none');
+                // --- UPDATE localStorage (cart) ---
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+                // Chuẩn hoá id thành string để tránh so sánh lằng nhằng
+                const idStr = String(productId);
+
+                // Tìm item hiện tại
+                const existing = cart.find(item => String(item.id) === idStr);
+                if (existing) {
+                    // Nếu đã có, tăng quantity lên 1
+                    existing.quantity = (existing.quantity || 0) + 1;
+                } else {
+                    // Thêm 1 item mới
+                    cart.push({
+                        id: idStr,
+                        name: productName,
+                        price: productPrice,
+                        image: productImage,
+                        quantity: 1
+                    });
                 }
 
-                // Hiện thông báo thành công nếu có
+                // Lưu lại
+                localStorage.setItem('cart', JSON.stringify(cart));
+
+                // --- Cập nhật badge chính xác từ localStorage ---
+                updateCartCount();
+
+                // Hiện toast nếu có id cartToast
                 const toastElement = document.getElementById('cartToast');
                 if (toastElement) {
                     const toast = new bootstrap.Toast(toastElement);
                     toast.show();
                 }
-            }, 800);
+            }, 800); // thời gian khớp với animation
         });
     });
+    /* ---------------------------------------------------------------------------------- */
+
 
     // Xác thực biểu mẫu bản tin
     const newsletterForm = document.getElementById('newsletterForm');

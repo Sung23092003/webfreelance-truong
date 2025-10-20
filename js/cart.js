@@ -1,4 +1,3 @@
-// === Dữ liệu sản phẩm ===
 const featuredProducts = [
     {
         id: 1,
@@ -143,120 +142,189 @@ const featuredProducts = [
     },
 ];
 
-// === Lấy ID sản phẩm từ localStorage hoặc URL ===
-const params = new URLSearchParams(window.location.search);
-const productId = parseInt(params.get("id")) || parseInt(localStorage.getItem("selectedProductId"));
-
-// === Tìm sản phẩm tương ứng ===
-const product = featuredProducts.find(p => p.id === productId);
-
-// === Hàm cập nhật số lượng hiển thị trong giỏ hàng ===
-function updateCartCount() {
+// === Lấy giỏ hàng từ localStorage ===
+function getCart() {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
-    const validItems = cart.filter(item => item.id && item.id !== "undefined");
-    const uniqueIds = [...new Set(validItems.map(item => item.id))];
-    document.getElementById("cart-count").textContent = uniqueIds.length;
+    console.log(cart);
+    // Bỏ qua item lỗi hoặc undefined
+    return cart.filter(item => item && item.id && !isNaN(item.id));
 }
 
-// === Hàm thêm sản phẩm vào giỏ hàng ===
-function addToCart(productId) {
-    if (!productId || isNaN(productId)) {
-        console.warn("⚠️ Không thể thêm sản phẩm: ID không hợp lệ");
+// === Hàm render giỏ hàng ===
+function renderCart() {
+    const cart = getCart();
+    const cartContainer = document.querySelector(".cart-items"); // nơi render
+
+    if (!cartContainer) return;
+
+    if (cart.length === 0) {
+        cartContainer.innerHTML = `
+            <div class="text-center py-5">
+                <h5>Giỏ hàng trống</h5>
+                <a href="products.html" class="btn btn-success mt-3">Tiếp tục mua sắm</a>
+            </div>`;
         return;
     }
 
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    const existing = cart.find(item => item.id === productId);
-    if (existing) {
-        existing.quantity += 1;
-    } else {
-        cart.push({ id: productId, quantity: 1 });
+    // Render từng sản phẩm
+    cartContainer.innerHTML = cart.map(item => {
+        const product = featuredProducts.find(p => p.id === item.id);
+        if (!product) return ""; // Bỏ nếu id không tồn tại
+
+        return `
+            <div class="row mb-4 align-items-center border-bottom pb-3">
+                <div class="col-md-3">
+                    <img src="${product.image}" class="img-fluid rounded" alt="${product.name}">
+                </div>
+                <div class="col-md-6">
+                    <h5>${product.name}</h5>
+                    <p class="text-muted small">Giá: ${product.price.toLocaleString()}₫</p>
+                    <div class="d-flex align-items-center">
+                        <button class="btn btn-outline-secondary btn-sm me-2" onclick="changeQuantity(${item.id}, -1)">-</button>
+                        <input type="number" min="1" value="${item.quantity}" class="form-control form-control-sm text-center" style="width: 60px;">
+                        <button class="btn btn-outline-secondary btn-sm ms-2" onclick="changeQuantity(${item.id}, 1)">+</button>
+                    </div>
+                </div>
+                <div class="col-md-3 text-end">
+                    <p class="fw-bold text-danger">${(product.price * item.quantity).toLocaleString()}₫</p>
+                    <button class="btn btn-link text-danger p-0" onclick="removeFromCart(${item.id})">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </div>
+        `;
+    }).join("");
+}
+
+// === Hàm thay đổi số lượng ===
+function changeQuantity(productId, delta) {
+    let cart = getCart();
+    const index = cart.findIndex(item => item.id === productId);
+    if (index === -1) return;
+
+    cart[index].quantity += delta;
+    if (cart[index].quantity <= 0) {
+        cart.splice(index, 1);
     }
 
     localStorage.setItem("cart", JSON.stringify(cart));
+    renderCart();
     updateCartCount();
+}
 
-    // Hiệu ứng feedback người dùng (SweetAlert2 nếu bạn đã import)
-    if (typeof Swal !== "undefined") {
-        Swal.fire({
-            icon: "success",
-            title: "Đã thêm vào giỏ!",
-            text: `${product.name} đã được thêm vào giỏ hàng.`,
-            showConfirmButton: false,
-            timer: 1500,
-        });
-    } else {
-        Swal.fire({
-            icon: "success",
-            title: "Đã thêm vào giỏ!",
-            text: `${product.name} đã được thêm vào giỏ hàng.`,
-            showConfirmButton: false,
-            timer: 1500,
-            toast: true,
-            position: "top-end",
-        });
+// === Xóa sản phẩm khỏi giỏ ===
+function removeFromCart(productId) {
+    let cart = getCart().filter(item => item.id !== productId);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    renderCart();
+    updateCartCount();
+}
 
+// === Xóa toàn bộ giỏ ===
+function clearCart() {
+    localStorage.removeItem("cart");
+    renderCart();
+    updateCartCount();
+}
+
+// === Đếm số lượng sản phẩm ===
+function updateCartCount() {
+    const cart = getCart();
+    const countElement = document.getElementById("cart-count");
+    if (countElement) {
+        countElement.textContent = cart.length;
     }
 }
 
-// === Hiển thị chi tiết sản phẩm ===
-if (product) {
-    document.getElementById("breadcrumbName").textContent = product.name;
-
-    document.getElementById("productDetail").innerHTML = `
-        <div class="col-md-6 text-center">
-            <img src="${product.image}" class="img-fluid rounded shadow-sm" alt="${product.name}">
-        </div>
-        <div class="col-md-6">
-            <h2 class="fw-bold text-success">${product.name}</h2>
-            <p class="text-muted">${product.category}</p>
-            <div class="d-flex align-items-center mb-2">
-                <div class="text-warning me-2">
-                    ${'★'.repeat(Math.floor(product.rating))} (${product.rating})
-                </div>
-            </div>
-            <h4 class="text-success fw-bold">${product.price.toLocaleString()}₫</h4>
-            ${product.oldPrice ? `<p class="text-muted text-decoration-line-through">${product.oldPrice.toLocaleString()}₫</p>` : ""}
-            <p class="mt-3">${product.description}</p>
-            <p><strong>Còn hàng:</strong> ${product.stock}</p>
-            <div class="d-grid gap-2 mt-4">
-                <!-- Nút giỏ hàng màu xanh -->
-                <button class="btn btn-success btn-add-cart" data-id="${product.id}">
-                    <i class="bi bi-cart-plus me-2"></i>Thêm vào giỏ
-                </button>
-                <button class="btn btn-outline-success">
-                    <i class="bi bi-heart me-2"></i>Yêu thích
-                </button>
-            </div>
-        </div>
-    `;
-
-    // Tab mô tả
-    document.querySelector("#description").innerHTML = `
-        <h4>Đặc điểm nổi bật</h4>
-        <p>${product.description}</p>
-        ${product.usesAndHowTo ? `
-            <h4 class="mt-4">Công dụng & Hướng dẫn sử dụng</h4>
-            <p>${product.usesAndHowTo}</p>
-        ` : ""}
-    `;
-} else {
-    document.getElementById("productDetail").innerHTML = `
-        <div class="text-center text-danger py-5">
-            <h3>Không tìm thấy sản phẩm!</h3>
-            <a href="products.html" class="btn btn-success mt-3">Quay lại trang sản phẩm</a>
-        </div>
-    `;
-}
-
-// === Lắng nghe sự kiện click nút giỏ hàng ===
-document.addEventListener("click", (e) => {
-    const btn = e.target.closest(".btn-add-cart");
-    if (!btn) return;
-    const id = parseInt(btn.dataset.id);
-    addToCart(id);
+// === Chạy khi load trang ===
+document.addEventListener("DOMContentLoaded", () => {
+    renderCart();
+    updateCartCount();
 });
 
-// === Cập nhật khi tải trang & khi localStorage thay đổi ===
-document.addEventListener("DOMContentLoaded", updateCartCount);
-window.addEventListener("storage", updateCartCount);
+// === Tính toán tổng tiền ===
+function updateSummary() {
+    const cart = getCart();
+    const subtotal = cart.reduce((sum, item) => {
+        const product = featuredProducts.find(p => p.id === item.id);
+        return product ? sum + product.price * item.quantity : sum;
+    }, 0);
+
+    const shipping = cart.length > 0 ? 30000 : 0;
+    let discount = 0;
+
+    // Nếu có mã giảm giá hợp lệ
+    const coupon = localStorage.getItem("coupon");
+    if (coupon === "GIAM50K") discount = 50000;
+
+    const total = Math.max(subtotal + shipping - discount, 0);
+
+    // Cập nhật UI
+    document.getElementById("subtotal").textContent = subtotal.toLocaleString() + "₫";
+    document.getElementById("shipping").textContent = shipping.toLocaleString() + "₫";
+    document.getElementById("discount").textContent = "-" + discount.toLocaleString() + "₫";
+    document.getElementById("total").textContent = total.toLocaleString() + "₫";
+}
+
+// === Áp dụng mã giảm giá ===
+document.addEventListener("click", e => {
+    if (e.target.id === "applyCoupon") {
+        const code = document.getElementById("couponCode").value.trim().toUpperCase();
+        if (code === "GIAM50K") {
+            localStorage.setItem("coupon", code);
+            alert("Áp dụng mã giảm 50.000₫ thành công!");
+        } else {
+            localStorage.removeItem("coupon");
+            alert("Mã giảm giá không hợp lệ!");
+        }
+        updateSummary();
+    }
+});
+
+// === API địa chỉ Việt Nam ===
+async function loadProvinces() {
+    const res = await fetch("https://provinces.open-api.vn/api/p/");
+    const provinces = await res.json();
+    const provinceSelect = document.getElementById("province");
+    provinces.forEach(p => {
+        const opt = document.createElement("option");
+        opt.value = p.code;
+        opt.textContent = p.name;
+        provinceSelect.appendChild(opt);
+    });
+
+    provinceSelect.addEventListener("change", async () => {
+        const res = await fetch(`https://provinces.open-api.vn/api/p/${provinceSelect.value}?depth=2`);
+        const data = await res.json();
+        const districtSelect = document.getElementById("district");
+        districtSelect.innerHTML = `<option value="">Chọn Quận/Huyện</option>`;
+        document.getElementById("ward").innerHTML = `<option value="">Chọn Phường/Xã</option>`;
+        data.districts.forEach(d => {
+            const opt = document.createElement("option");
+            opt.value = d.code;
+            opt.textContent = d.name;
+            districtSelect.appendChild(opt);
+        });
+
+        districtSelect.addEventListener("change", async () => {
+            const res = await fetch(`https://provinces.open-api.vn/api/d/${districtSelect.value}?depth=2`);
+            const data = await res.json();
+            const wardSelect = document.getElementById("ward");
+            wardSelect.innerHTML = `<option value="">Chọn Phường/Xã</option>`;
+            data.wards.forEach(w => {
+                const opt = document.createElement("option");
+                opt.value = w.code;
+                opt.textContent = w.name;
+                wardSelect.appendChild(opt);
+            });
+        });
+    });
+}
+
+// === Chạy khi load trang ===
+document.addEventListener("DOMContentLoaded", () => {
+    renderCart();
+    updateCartCount();
+    updateSummary();
+    loadProvinces();
+});

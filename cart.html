@@ -25,7 +25,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="index.html">Trang chủ</a>
+                        <a class="nav-link" href="index.html">Trang chủ</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
@@ -56,7 +56,10 @@
                 <div class="d-flex">
                     <a href="cart.html" class="btn btn-nav btn--cart position-relative me-2">
                         <i class="bi bi-cart fs-5"></i>
-
+                        <span id="cart-count"
+                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            0
+                        </span>
                     </a>
                     <a href="login.html" class="btn btn-nav btn--user"><i class="bi bi-person fs-5"></i></a>
                 </div>
@@ -83,94 +86,8 @@
                 <div class="card mb-4">
                     <div class="card-body">
                         <!-- Sản phẩm 1 -->
-                        <div class="row mb-4">
-                            <div class="col-md-3">
-                                <img src="images/Sữa Rửa Mặt CeraVe.jpg" class="img-fluid rounded" alt="Sữa rửa mặt">
-                                <!-- Ảnh sản phẩm -->
-                            </div>
-                            <div class="col-md-9">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <h5 class="mb-1">Sữa Rửa Mặt CeraVe</h5> <!-- Tên sản phẩm -->
-                                        <p class="mb-1 text-muted small">Mã sản phẩm: SKU001</p>
-                                        <!-- Chỉnh số lượng sản phẩm -->
-                                        <div class="d-flex align-items-center">
-                                            <button class="btn btn-outline-secondary btn-sm me-2"
-                                                onclick="decreaseQuantity(1)">-</button> <!-- Giảm số lượng -->
-                                            <input type="number" class="form-control form-control-sm text-center"
-                                                style="width: 60px;" value="1" min="1" id="quantity1">
-                                            <!-- Nhập số lượng -->
-                                            <button class="btn btn-outline-secondary btn-sm ms-2"
-                                                onclick="increaseQuantity(1)">+</button> <!-- Tăng số lượng -->
-                                        </div>
-                                    </div>
-                                    <div class="text-end">
-                                        <p class="mb-1 text-danger fw-bold">220.000₫</p> <!-- Giá sản phẩm -->
-                                        <button class="btn btn-link text-danger p-0" onclick="removeItem(1)"><i
-                                                class="bi bi-trash"></i></button> <!-- Xóa sản phẩm khỏi giỏ -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <hr>
-                        <!-- Sản phẩm 2 -->
-                        <div class="row mb-4">
-                            <div class="col-md-3">
-                                <img src="images/artboard_1_copy.jpg" class="img-fluid rounded" alt="Kem dưỡng">
-                                <!-- Ảnh sản phẩm -->
-                            </div>
-                            <div class="col-md-9">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <h5 class="mb-1">Kem Dưỡng Ẩm Laneige Water Bank</h5> <!-- Tên sản phẩm -->
-                                        <p class="mb-1 text-muted small">Mã sản phẩm: SKU002</p>
-                                        <div class="d-flex align-items-center">
-                                            <button class="btn btn-outline-secondary btn-sm me-2"
-                                                onclick="decreaseQuantity(2)">-</button> <!-- Giảm số lượng -->
-                                            <input type="number" class="form-control form-control-sm text-center"
-                                                style="width: 60px;" value="1" min="1" id="quantity2">
-                                            <!-- Nhập số lượng -->
-                                            <button class="btn btn-outline-secondary btn-sm ms-2"
-                                                onclick="increaseQuantity(2)">+</button> <!-- Tăng số lượng -->
-                                        </div>
-                                    </div>
-                                    <div class="text-end">
-                                        <p class="mb-1 text-danger fw-bold">650.000₫</p> <!-- Giá sản phẩm -->
-                                        <button class="btn btn-link text-danger p-0" onclick="removeItem(2)"><i
-                                                class="bi bi-trash"></i></button> <!-- Xóa sản phẩm khỏi giỏ -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <hr>
-                        <!-- Sản phẩm 3 -->
-                        <div class="row">
-                            <div class="col-md-3">
-                                <img src="images/Tinh-chat-sam-co-dac-Sulwhasoo-First-Care-Activating-Serum-5.jpg"
-                                    class="img-fluid rounded" alt="Serum"> <!-- Ảnh sản phẩm -->
-                            </div>
-                            <div class="col-md-9">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <h5 class="mb-1">Tinh Chất Sulwhasoo First Care</h5> <!-- Tên sản phẩm -->
-                                        <p class="mb-1 text-muted small">Mã sản phẩm: SKU003</p>
-                                        <div class="d-flex align-items-center">
-                                            <button class="btn btn-outline-secondary btn-sm me-2"
-                                                onclick="decreaseQuantity(3)">-</button> <!-- Giảm số lượng -->
-                                            <input type="number" class="form-control form-control-sm text-center"
-                                                style="width: 60px;" value="1" min="1" id="quantity3">
-                                            <!-- Nhập số lượng -->
-                                            <button class="btn btn-outline-secondary btn-sm ms-2"
-                                                onclick="increaseQuantity(3)">+</button> <!-- Tăng số lượng -->
-                                        </div>
-                                    </div>
-                                    <div class="text-end">
-                                        <p class="mb-1 text-danger fw-bold">1.850.000₫</p> <!-- Giá sản phẩm -->
-                                        <button class="btn btn-link text-danger p-0" onclick="removeItem(3)"><i
-                                                class="bi bi-trash"></i></button> <!-- Xóa sản phẩm khỏi giỏ -->
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="card mb-4">
+                            <div class="card-body cart-items"></div>
                         </div>
                     </div>
                 </div>
@@ -193,20 +110,20 @@
                         <h5 class="card-title mb-4">Tóm tắt đơn hàng</h5>
                         <div class="d-flex justify-content-between mb-2">
                             <span>Tạm tính</span>
-                            <span>2.720.000₫</span>
+                            <span id="subtotal">0₫</span>
                         </div>
                         <div class="d-flex justify-content-between mb-2">
                             <span>Phí vận chuyển</span>
-                            <span>30.000₫</span>
+                            <span id="shipping">30.000₫</span>
                         </div>
-                        <div class="d-flex justify-content-between mb-4">
+                        <div class="d-flex justify-content-between mb-2">
                             <span>Giảm giá</span>
-                            <span>-50.000₫</span>
+                            <span id="discount">0₫</span>
                         </div>
                         <hr>
                         <div class="d-flex justify-content-between mb-4">
                             <strong>Tổng cộng</strong>
-                            <strong class="text-danger">2.700.000₫</strong>
+                            <strong class="text-danger" id="total">0₫</strong>
                         </div>
 
                         <!-- Nhập mã giảm giá -->
@@ -214,10 +131,23 @@
                             <label for="couponCode" class="form-label">Mã giảm giá</label>
                             <div class="input-group">
                                 <input type="text" class="form-control" id="couponCode" placeholder="Nhập mã giảm giá">
-                                <!-- Ô nhập mã giảm giá -->
-                                <button class="btn btn-outline-primary" type="button">Áp dụng</button>
-                                <!-- Nút áp dụng mã -->
+                                <button class="btn btn-outline-primary" type="button" id="applyCoupon">Áp dụng</button>
                             </div>
+                        </div>
+
+                        <!-- Địa chỉ giao hàng -->
+                        <div class="mb-4">
+                            <h6 class="fw-bold mb-3">Địa chỉ giao hàng</h6>
+                            <select id="province" class="form-select mb-2">
+                                <option value="">Chọn Tỉnh/Thành phố</option>
+                            </select>
+                            <select id="district" class="form-select mb-2">
+                                <option value="">Chọn Quận/Huyện</option>
+                            </select>
+                            <select id="ward" class="form-select mb-3">
+                                <option value="">Chọn Phường/Xã</option>
+                            </select>
+                            <input type="text" id="addressDetail" class="form-control" placeholder="Số nhà, tên đường">
                         </div>
 
                         <!-- Nút thanh toán -->
@@ -286,7 +216,7 @@
                 <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
                     <h5 class="text-uppercase mb-4 fw-bold">Liên hệ với chúng tôi</h5>
                     <ul class="list-unstyled">
-                        <li class="mb-2"><i class="bi bi-geo-alt me-2"></i> 123 Nguyễn Văn Linh, Q.7, TP.HCM</li>
+                        <li class="mb-2"><i class="bi bi-geo-alt me-2"></i> Số 51 Đinh Tiên Hoàng, Q. Hoàn Kiếm, TP. Hà Nội.</li>
                         <li class="mb-2"><i class="bi bi-telephone me-2"></i> (028) 1234 5678</li>
                         <li class="mb-2"><i class="bi bi-envelope me-2"></i> info@agrostore.com</li>
                         <li><i class="bi bi-clock me-2"></i> 7:00 - 20:00, Thứ Hai - Chủ Nhật</li>
@@ -303,10 +233,64 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/scripts.js"></script>
     <script>
+        // Đặt category khi chọn
         function setCategory(category) {
             localStorage.setItem("selectedCategory", category);
         }
+
+        // Cập nhật số lượng trong giỏ hàng
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem("cart")) || [];
+            // Bỏ qua các item không hợp lệ (ví dụ id bị undefined)
+            const validItems = cart.filter(item => item.id && item.id !== "undefined");
+            const uniqueIds = [...new Set(validItems.map(item => item.id))];
+            document.getElementById("cart-count").textContent = uniqueIds.length;
+        }
+
+        // Thêm sản phẩm vào giỏ hàng
+        function addToCart(productId) {
+            // Nếu productId bị lỗi (undefined, null, NaN) => bỏ qua
+            if (!productId || productId === "undefined" || isNaN(productId)) {
+                console.warn("⚠️ Không thể thêm sản phẩm: ID không hợp lệ");
+                return;
+            }
+
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+            // Nếu sản phẩm đã tồn tại -> tăng số lượng
+            const existing = cart.find(item => item.id === productId);
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                cart.push({ id: productId, quantity: 1 });
+            }
+
+            // Lưu lại
+            localStorage.setItem("cart", JSON.stringify(cart));
+            updateCartCount();
+        }
+
+        // Hàm xử lý click thêm giỏ hàng
+        function handleAddToCart(e) {
+            const btn = e.target.closest(".btn-add-cart");
+            if (!btn) return;
+
+            const id = btn.dataset.id ? parseInt(btn.dataset.id) : null;
+            addToCart(id);
+        }
+
+        // Khi DOM sẵn sàng
+        document.addEventListener("DOMContentLoaded", () => {
+            updateCartCount();
+            document.removeEventListener("click", handleAddToCart);
+            document.addEventListener("click", handleAddToCart);
+        });
+
+        // Đồng bộ giữa các tab
+        window.addEventListener("storage", updateCartCount);
+
     </script>
+    <script src="./js/cart.js"></script>
 </body>
 
 </html>

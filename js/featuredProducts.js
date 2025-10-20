@@ -163,9 +163,11 @@ featuredProducts.slice(0, 6).forEach((p) => {
         <div class="card h-100 border-0 shadow-sm">
           <div class="position-relative">
             <img src="${p.image}" class="card-img-top" alt="${p.name}">
-            <div class="product-overlay">
+            <div class="product-overlay d-flex justify-content-center gap-2">
               <button class="btn btn-sm btn-outline-light"><i class="bi bi-heart"></i></button>
-              <button class="btn btn-sm btn-outline-light"><i class="bi bi-cart-plus"></i></button>
+              <button class="btn btn-sm btn-outline-light btn-add-cart" data-id="${p.id}">
+                <i class="bi bi-cart-plus"></i>
+              </button>
             </div>
           </div>
           <div class="card-body">
@@ -184,6 +186,4 @@ featuredProducts.slice(0, 6).forEach((p) => {
       </div>
     `;
 });
-
-
 
